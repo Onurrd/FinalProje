@@ -120,3 +120,36 @@ source("tests//Q4_tests_onur_uresin_210401065.R")
 
 
 
+# Q5 : Veri mühendisliği 
+
+Burda kullandığım dataları karakterin kullandığı silah türüne göre birleştirdim.Artık hem karakter özelliğinie göre hemde silahın özelliklerine göre ayıklama yapabilirim.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+selected_data <- myDF %>%
+        select(weapon_name,type,rarity,max_atk,substat_type,max_substat)
+selected_data1 <- myDF1 %>%
+        select(character_name,weapon_type,hp_90_90,atk_90_90,def_90_90,ascension,special_6) %>%
+        rename(type = weapon_type)
+
+merged_data <- merge(x=selected_data1, y=selected_data,by="type",all.x = TRUE)
+
+
+head(merged_data)
+ort_atk <- mean(merged_data$atk_90_90)
+
+filtred_data3 <- subset(merged_data,`atk_90_90` > `ort_atk`  & `type` == "Polearm")
+head(filtred_data3,60)
+
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+library(testthat)
+source("tests//Q5_tests_onur_uresin_210401065.R")
+
+```
+
+yukarıda görmüş olduğumuz gibi sadece mızrak(polearm) kullanan karaketrler örnek olarak gösterilmiştir.
+
