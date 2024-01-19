@@ -22,3 +22,76 @@ x karakteri için y silahının önerilmesi.
 Bu proje sonunda kullanıcılar silahın özelliklerini anlamasa bile butona basıp karakteri için hangi silahı kuşanmaları gerektiğini öğrenecek ve gönül rahatlığıyla silahlarını kullanabilecekler.
 
 
+# Q3 : Veri seti keşifsel analizi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+library(readr)
+myDF <- read_csv("genshin_weapons_v4.csv")
+myDF1 <- read_csv("genshin.csv")
+```
+
+Veri setleri Kaggle web sitesinden indirilmiştir ve **readr::read_csv()** fonksiyonu kullanılmıştır. Veri boyutları aşağıdaki gibidir :
+
+- Satir sayisi : `r nrow(myDF)`
+- Sütun sayisi : `r ncol(myDF)`
+- Satir sayisi : `r nrow(myDF1)`
+- Sütun sayisi : `r ncol(myDF1)`
+
+Veri setlerinin ön görsellemeleri aşağıda verilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+myDF
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+myDF1
+```
+
+Görmüş olduğumuz verilerde karakterlerin ve silahların hangi materyal kullanılarak geliştirildiği, takımyıldızının ne olduğu,yaptıkları özel yemek gibi şeyler gereksizdir.Ve biz karakterler ve silahlar üzreinde maksimum level(90) baz alınarak filtreleme yapıcağımız için karakterlerin 90 levelden öncesi hakkındaki verileri gereksizdir. Bu sütunlardaki değişkenlere ihtiyaç duymayacağımızdan onları sileceğiz / dikkate almayacağız.
+
+
+
+Silahların alt nitelik türü ve alt niteliğin maksimum değerlerinin dağılımı aşağıdaki histogramda gösterilmiştir.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+substat_types <- unique(myDF$substat_type)[1:9]
+
+library(ggplot2)
+
+ggplot(myDF[myDF$substat_type %in% substat_types,], aes(x = substat_type, y = max_substat, fill = substat_type)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 1.0), color = "black") +
+  ggtitle("substat_type'a Göre max_substat Değerleri") +
+  xlab("substat_type") +
+  ylab("max_substat")
+
+```
+
+
+Karakterlerin maksimum saldırı,can ve savunma değeri verilerinin dağılımı aşağıdaki histogramda gösterilmiştir.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+hist(myDF1$atk_90_90, breaks = 20)
+hist(myDF1$hp_90_90, breaks = 20)
+hist(myDF1$def_90_90, breaks = 20)
+
+
+filtred_data <- subset(myDF,`max_atk` == 510) 
+filtred_data
+filtred_data1 <- subset(myDF,`substat_type` == "Energy Recharge"  & `type` == "Polearm")
+filtred_data1
+
+
+```
+
+
+Yukarıda gömüş olduğunuz 2 tabloda damax_atk değere 510 olan ve altındaki tabloda ise alt niteliği Energy Recharge olan ve türü mızrak(polearm) olan silahlar listelenmiştir 
+Görüldüğü üzere her silah farklı bir alat niteliğe sahiptir bununla birlikte aynı alt niteliğe sahip olsa bile bu alt nitelikler farklı değerde olabilir .Her karakterin güç aldığı değişken farklıdır ve bu yüzden her karakterin kuşanması gereken silahın özelliği değişir.
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+library(testthat)
+source("tests//Q3_tests_onur_uresin_210401065.R")
+
+```
