@@ -1,0 +1,15 @@
+---
+title: "Proje Rapor : Onur Üresin 210401065"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+# Q1 : Problem tanımı
+
+Şirketim **Mihoyoverse**.İş problemim, oyunumdaki silahların ingilizce bilmeyen insalar tarafından anlaşılmaması ve bü yüzden hangi karakterle hangi silahın uyumlu olduğunu bilememesi.
+ 
+
+
+
