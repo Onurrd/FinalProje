@@ -11,5 +11,14 @@ output:
 Şirketim **Mihoyoverse**.İş problemim, oyunumdaki silahların ingilizce bilmeyen insalar tarafından anlaşılmaması ve bü yüzden hangi karakterle hangi silahın uyumlu olduğunu bilememesi.
  
 
+# Q2 : Proje Amacı
+bu projenin amacı,**https://www.kaggle.com/datasets/sophiahealy/genshin-impact-character-data/data** **https://www.kaggle.com/datasets/ngtengsuan/genshin-impact-weapon-dataset/data** linklerini kullanarak
+oyun içerisinde karakterlerin sinerjik olduğu ve kullanıcının sahip olduğu silahları analiz edip önüne sunan bi buton yapmak.
+
+
+Almış olduğum datasetlerinden hangi karakter hangi değerden güç alıyor ve hangi silahın ne gibi özellikleri var bunları analiz edilip belli koşullar sağlandığında 
+x karakteri için y silahının önerilmesi.
+
+Bu proje sonunda kullanıcılar silahın özelliklerini anlamasa bile butona basıp karakteri için hangi silahı kuşanmaları gerektiğini öğrenecek ve gönül rahatlığıyla silahlarını kullanabilecekler.
 
 
