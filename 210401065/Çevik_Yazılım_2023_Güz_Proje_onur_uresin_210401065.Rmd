@@ -153,3 +153,37 @@ source("tests//Q5_tests_onur_uresin_210401065.R")
 
 yukarıda görmüş olduğumuz gibi sadece mızrak(polearm) kullanan karaketrler örnek olarak gösterilmiştir.
 
+
+# Q6 : Veri analizi
+Bu bölümde karakterlerin kuşanması gereken silahları belirlemek için karakterle olması gereken değerler belirtilip bunun üzerinden sonuçlar çıkartılmıştır.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+ascensions <- unique(myDF1$ascension)[1:16]
+
+ggplot(myDF1[myDF1$ascension %in% ascensions,], aes(x = special_6, fill = ascension)) +
+  geom_bar(stat = "count", position = position_dodge(width = 1.0), color = "black") +
+  ggtitle("ascension'a Göre special_6 Değerleri") +
+  xlab("special_6") +
+  ylab("Count")
+
+filtred_data4 <- subset(merged_data,`atk_90_90` > `ort_atk`  & `type` == "Sword" & `substat_type` == "CRIT DMG" & `ascension` == "CRIT DMG")
+head(filtred_data4,60)
+ort_def <- mean(merged_data$def_90_90)
+filtred_data5 <- subset(merged_data,`def_90_90` > `ort_def`+150 & `substat_type` == "DEF")
+head(filtred_data5,60)
+
+```
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+library(testthat)
+
+source("tests//Q6_tests_onur_uresin_210401065.R")
+
+```
+
+Yukarıda gördüğünüz histogram karakter güçlenince kazandığı ekstra nicelikler ve bunun sıklıkları belirtilmiştir. Onun altındaki tabloda örnek olarak kılıç(sword) kullanıp üstüne max_atk değeri belli bir değerin üzerinde olması ve bununla beraber kuşanacağı silahın alt niteliğinin kritik hasar(CRIT DMG) olması istenmektedir. Onun altındaki başka bir tabloda aynı istatistiğin defans(max_def) için kullanılışı gösterilmiştir. Dediğim gibi her karakter farklı şeylerden güç aldığı için bunun gibi çokça örnek yazılabilir. Ben sadece gözüme çarpan 2 örnek yazdım.
+
+
+
