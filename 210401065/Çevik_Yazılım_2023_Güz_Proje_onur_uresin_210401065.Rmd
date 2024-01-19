@@ -186,4 +186,11 @@ source("tests//Q6_tests_onur_uresin_210401065.R")
 Yukarıda gördüğünüz histogram karakter güçlenince kazandığı ekstra nicelikler ve bunun sıklıkları belirtilmiştir. Onun altındaki tabloda örnek olarak kılıç(sword) kullanıp üstüne max_atk değeri belli bir değerin üzerinde olması ve bununla beraber kuşanacağı silahın alt niteliğinin kritik hasar(CRIT DMG) olması istenmektedir. Onun altındaki başka bir tabloda aynı istatistiğin defans(max_def) için kullanılışı gösterilmiştir. Dediğim gibi her karakter farklı şeylerden güç aldığı için bunun gibi çokça örnek yazılabilir. Ben sadece gözüme çarpan 2 örnek yazdım.
 
 
+# Q7 : Sonuç değerlendirme, tavsiyeler
+Çıkarmış olduğum sonuçlar problemimi direkt olarak çözüyor çünkü sağladığım koşula göre kesin sonuç alıyorum.Kullanıcım oyunda seçtiği karaktere tıklayıp butona bastığı an o karakter için en iyi silahları görüntüleyecek.Sonuçlarımın kuvvetli yanı dediğim gibi kesin sonuca ulaşması ve %100 tutarlı olması.Zayıf yönü de içeriğin çok olmasından dolayı geliştirmesi çok uzun ve zahmetli olacak.
+
+
+
+
+
 
